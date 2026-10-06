@@ -1,0 +1,128 @@
+
+################ PRODUCTOS ################
+
+### POST Crear producto
+POST http://localhost:8080/api/product
+Content-Type: application/json
+
+{
+  "name": "Pan y picos",
+  "price": 1,
+  "details": "Servicio de mesa"
+}
+
+### POST Crear producto - Error 1
+POST http://localhost:8080/api/product
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 1,
+  "details": "Servicio de mesa"
+}
+
+### POST Crear producto - Error 2
+POST http://localhost:8080/api/product
+Content-Type: application/json
+
+{
+  "name": "Pan y picos",
+  "price": -1,
+  "details": "Servicio de mesa"
+}
+
+
+### POST Crear producto - Error 3
+POST http://localhost:8080/api/product
+Content-Type: application/json
+
+{
+  "name": "Pan y picos",
+  "price": 1,
+  "details": null
+}
+
+### GET obtener todos los productos
+GET http://localhost:8080/api/product
+
+### GET obtener producto id 1
+GET http://localhost:8080/api/product/1
+
+
+### PUT Modificar producto
+PUT http://localhost:8080/api/product/1
+Content-Type: application/json
+
+{
+  "name": "Pan y picos",
+  "price": -13,
+  "details": "Servicio de mesa por persona"
+}
+
+### DELETE borrar producto id 1
+DELETE http://localhost:8080/api/product/1
+
+
+################ CATEGORÍAS ################
+# Al arrancar, DataSeed inserta 4 categorías (ids 1 a 4):
+# Entrantes, Principales, Postres y Bebidas
+
+### GET obtener todas las categorías
+GET http://localhost:8080/api/category
+
+### GET obtener categoría id 1
+GET http://localhost:8080/api/category/1
+
+### GET obtener categoría que no existe - Error 404
+GET http://localhost:8080/api/category/999
+
+### POST Crear categoría
+POST http://localhost:8080/api/category
+Content-Type: application/json
+
+{
+  "name": "Vinos"
+}
+
+### POST Crear categoría - Error 1 (nombre vacío)
+POST http://localhost:8080/api/category
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+### POST Crear categoría - Error 2 (nombre nulo)
+POST http://localhost:8080/api/category
+Content-Type: application/json
+
+{
+  "name": null
+}
+
+### PUT Modificar categoría id 1
+PUT http://localhost:8080/api/category/1
+Content-Type: application/json
+
+{
+  "name": "Entrantes y tapas"
+}
+
+### PUT Modificar categoría - Error 1 (nombre vacío)
+PUT http://localhost:8080/api/category/1
+Content-Type: application/json
+
+{
+  "name": "  "
+}
+
+### PUT Modificar categoría que no existe - Error 404
+PUT http://localhost:8080/api/category/999
+Content-Type: application/json
+
+{
+  "name": "Categoría fantasma"
+}
+
+### DELETE borrar categoría id 4
+DELETE http://localhost:8080/api/category/4
